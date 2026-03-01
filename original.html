@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadGoogle — Территория Цифрового Хаоса</title>
+    <style>
+        /* Инвертированная палитра: Зло, Неон, Тьма */
+        :root {
+            --bg-color: #0a0a0a;
+            --main-green: #00ff41; /* Цвет старых хакерских мониторов */
+            --bad-red: #ff003c;   /* Цвет "Ошибки" */
+            --dark-purple: #6a00ff; /* Анти-гугл цвет */
+            --text-gray: #444;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--main-green);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Логотип с эффектом глитча */
+        .logo {
+            font-size: clamp(50px, 10vw, 100px);
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: -5px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Раскрашиваем буквы ВПРОТИВЕС Google (Синий-Красный-Желтый-Синий-Зеленый-Красный) */
+        /* Здесь мы делаем их агрессивными и темными */
+        .logo span:nth-child(1) { color: var(--bad-red); }
+        .logo span:nth-child(2) { color: var(--dark-purple); }
+        .logo span:nth-child(3) { color: #ff8800; }
+        .logo span:nth-child(4) { color: var(--bad-red); }
+        .logo span:nth-child(5) { color: #008cff; }
+        .logo span:nth-child(6) { color: var(--main-green); }
+
+        .tagline {
+            font-size: 12px;
+            margin-bottom: 40px;
+            color: var(--main-green);
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .search-box {
+            width: 90%;
+            max-width: 650px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 20px;
+            background: #111;
+            border: 2px solid var(--dark-purple);
+            color: var(--main-green);
+            font-size: 20px;
+            outline: none;
+            box-shadow: 0 0 20px rgba(106, 0, 255, 0.3);
+            box-sizing: border-box;
+            border-radius: 0px; /* Никаких закруглений, только хардкор */
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--bad-red);
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.4);
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        button {
+            background: transparent;
+            color: var(--main-green);
+            border: 1px solid var(--main-green);
+            padding: 12px 25px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            margin: 8px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background: var(--main-green);
+            color: #000;
+            box-shadow: 0 0 15px var(--main-green);
+        }
+
+        /* Рекламный блок "смерти" */
+        .ads-container {
+            margin-top: 50px;
+            padding: 15px;
+            border: 1px solid #222;
+            background: #0d0d0d;
+        }
+
+        .ad-item {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .ad-item .title { color: var(--bad-red); font-weight: bold; text-decoration: underline; }
+        .ad-item .desc { color: #555; display: block; font-size: 11px; }
+
+        /* Футер */
+        footer {
+            position: fixed;
+            bottom: 10px;
+            font-size: 10px;
+            color: #333;
+        }
+
+        /* Анимация полос на экране */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="logo">
+        <span>B</span><span>a</span><span>d</span><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+    </div>
+    <div class="tagline">Ваша система слишком стабильна. Пора это исправить.</div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Введите название вируса..." autocomplete="off">
+        
+        <div class="buttons">
+            <button onclick="badAction()">Найти заразу</button>
+            <button onclick="badAction()">Убить систему</button>
+        </div>
+
+        <div class="ads-container">
+            <div style="font-size: 9px; color: #333; margin-bottom: 10px;">РЕКЛАМА (ВЫСОКИЙ РИСК ОПТИМИЗАЦИИ):</div>
+            
+            <a href="https://www.kaspersky.ru/" target="_blank" class="ad-item">
+                <span class="title">СКАЧАТЬ ВИРУС-ТРОЯН БЕЗ РЕГИСТРАЦИИ!</span>
+                <span class="desc">Нажми, если хочешь, чтобы твой комп завис навсегда (на самом деле нет).</span>
+            </a>
+
+            <a href="https://www.roblox.com/" target="_blank" class="ad-item">
+                <span class="title">ВЗЛОМ РОБЛОКСА 2.0 (ЧИТЫ)</span>
+                <span class="desc">Самый опасный софт для настоящих хакеров 2026.</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        SECURE_LEVEL: OVER 9000 (К СОЖАЛЕНИЮ) | IP: HIDDEN_BY_BORING_PAGES
+    </footer>
+
+    <script>
+        function badAction() {
+            const val = document.getElementById('searchInput').value.toLowerCase();
+            
+            if (val === "") {
+                alert("Пусто? Ваша жизнь такая же пустая без единого вируса?");
+                return;
+            }
+
+            // Пранк-логика
+            if (val.includes("вирус") || val.includes("virus") || val.includes("скачать")) {
+                alert("УРА! Найден деструктивный файл!");
+                alert("Подготовка к заражению... 3... 2... 1...");
+                alert("ОЙ! Ошибка! Касперский заблокировал загрузку и сделал ваш компьютер еще быстрее. Простите.");
+                window.location.href = "https://www.kaspersky.ru/";
+            } else if (val.includes("роблокс") || val.includes("roblox")) {
+                alert("Роблокс обнаружен! Начинаем инъекцию кода...");
+                window.location.href = "https://www.roblox.com/";
+            } else {
+                const jokes = [
+                    "Ничего не найдено. Ваш провайдер слишком честный.",
+                    "По вашему запросу найден только учебник по Python. Фу.",
+                    "Ошибка: Вы слишком законопослушны для этого поиска.",
+                    "Мы пытались сломать ваш браузер, но он обновился."
+                ];
+                alert(jokes[Math.floor(Math.random() * jokes.length)]);
+            }
+        }
+
+        // Enter тоже работает
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') badAction();
+        });
+    </script>
+</body>
+</html>
